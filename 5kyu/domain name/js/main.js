@@ -17,5 +17,5 @@ function produceDomain(str) {
   return domainArray[0][domainArray[0].length - 2];
 }
 
-let string = "http://www.github.com/hoyw/";
+let string = "http://www.github.com";
 console.log(produceDomain(string));
