@@ -19,3 +19,11 @@ function produceDomain(str) {
 
 let string = "https://youtube.com";
 console.log(produceDomain(string));
+
+//codewars solution
+function domainName(url){
+  url = url.replace("https://", '');
+  url = url.replace("http://", '');
+  url = url.replace("www.", '');
+  return url.split('.')[0];
+};
