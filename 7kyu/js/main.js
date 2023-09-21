@@ -9,11 +9,14 @@
 // On 12-hours clock, there is no 0 hour, and time just after midnight is denoted as, for example, 12:15 am. On 24-hour clock, this translates to 0015.
 
 function convertTime(time) {
-  time = time.split(":");
-  if (Number(time[0]) < 12 && time[1].includes("am")) {
-    return `0${time[0]}${time[1]}`;
+  if (time.includes("a.m.")) {
+    time = time.replace("a.m.", "");
   }
+  if (time.includes("p.m.")) {
+    time = time.replace("p.m.", "");
+  }
+
   return time;
 }
 
-console.log(convertTime("8:13 am"));
+console.log(convertTime("8:13 p.m."));
