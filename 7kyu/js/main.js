@@ -25,29 +25,48 @@
 //remove the a.m., add 0 to the begining
 //if it is 10 0r 11 , dont add 0
 
-function convert24(time) {
-  SplitTime = time.split(":");
-  if (time.includes("a.m.")) {
-    if (Number(SplitTime[0]) < 10) {
-      time = time.replace("a.m.", "").replace(":", "");
-      return `0${time}`;
-    } else if (Number(SplitTime[0]) === 10 || Number(SplitTime[0]) === 11) {
-      time = time.replace("a.m.", "").replace(":", "");
-      return time;
-    } else if (Number(SplitTime[0]) === 12) {
-      time = time.replace("a.m.", "").replace(":", "").replace("12", "");
-      return `00${time}`;
+// function convert24(time) {
+//   SplitTime = time.split(":");
+//   if (time.includes("a.m.")) {
+//     if (Number(SplitTime[0]) < 10) {
+//       time = time.replace("a.m.", "").replace(":", "");
+//       return `0${time}`;
+//     } else if (Number(SplitTime[0]) === 10 || Number(SplitTime[0]) === 11) {
+//       time = time.replace("a.m.", "").replace(":", "");
+//       return time;
+//     } else if (Number(SplitTime[0]) === 12) {
+//       time = time.replace("a.m.", "").replace(":", "").replace("12", "");
+//       return `00${time}`;
+//     }
+//   }
+//   if (time.includes("p.m.")) {
+//     if (Number(SplitTime[0]) < 12) {
+//       time = time.replace("p.m.", "").split(":");
+//       addedTime = Number(SplitTime[0]) + 12;
+//       return `${addedTime}${time[1]}`;
+//     } else if (Number(SplitTime[0]) === 12) {
+//       time = time.replace("p.m.", "").split(":").join("");
+//       return time;
+//     }
+//   }
+// }
+// console.log(convert24("12:13 p.m."));
+
+function convertTime(hour, minute, period) {
+  if (period === "am") {
+    if (hour < 10) {
+      return `0${hour}${minute}`;
+    } else if (hour === 10 || hour === 1) {
+      return `${hour}${minute}`;
+    } else return `00${minute}`;
+  } else if (period === "pm") {
+    if (hour === 12) {
+      return `${hour}${minute}`;
     }
-  }
-  if (time.includes("p.m.")) {
-    if (Number(SplitTime[0]) < 12) {
-      time = time.replace("p.m.", "").split(":");
-      addedTime = Number(SplitTime[0]) + 12;
-      return `${addedTime}${time[1]}`;
-    } else if (Number(SplitTime[0]) === 12) {
-      time = time.replace("p.m.", "").split(":").join("");
-      return time;
-    }
+    return `${hour + 12}${minute}`;
   }
 }
-console.log(convert24("12:13 p.m."));
+
+console.log(convertTime(1, 20, "am"));
+
+//according to CodeWars
