@@ -26,19 +26,28 @@
 //if it is 10 0r 11 , dont add 0
 
 function convert24(time) {
+  SplitTime = time.split(":");
   if (time.includes("a.m.")) {
-    SplitTime = time.split(":");
-
     if (Number(SplitTime[0]) < 10) {
       time = time.replace("a.m.", "").replace(":", "");
       return `0${time}`;
     } else if (Number(SplitTime[0]) === 10 || Number(SplitTime[0]) === 11) {
       time = time.replace("a.m.", "").replace(":", "");
       return time;
+    } else if (Number(SplitTime[0]) === 12) {
+      time = time.replace("a.m.", "").replace(":", "").replace("12", "");
+      return `00${time}`;
     }
   }
   if (time.includes("p.m.")) {
-     
-   }
+    if (Number(SplitTime[0]) < 12) {
+      time = time.replace("p.m.", "").split(":");
+      addedTime = Number(SplitTime[0]) + 12;
+      return `${addedTime}${time[1]}`;
+    } else if (Number(SplitTime[0]) === 12) {
+      time = time.replace("p.m.", "").split(":").join("");
+      return time;
+    }
+  }
 }
-console.log(convert24("11:13 a.m."));
+console.log(convert24("12:13 p.m."));
