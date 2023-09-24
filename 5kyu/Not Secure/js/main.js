@@ -22,3 +22,9 @@ function checkAlphanumeric(str) {
 
 console.log(checkAlphanumeric(string));
 //console.log(string.match(check)); //produces null. if just one value doesnt match, the whole thing produces null
+
+//SECOND SOLUTION
+function alphanumeric(string) {
+  return /^[a-zA-Z0-9]+$/.test(string);
+}
+//the tezt method checks whether the regex is in the string.
