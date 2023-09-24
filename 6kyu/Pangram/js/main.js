@@ -9,29 +9,39 @@
 //fromCharCode(i) loops through character codes numbers
 //a string of all alphabets should be equal to all aphabets of the given string
 
-//DID NOT WORK. NEEDS REDO
-// function checkLetters(str) {
-//   check = /^[A-Za-z]+$/;
-//   if (str.match(check).length === 26) {
-//     return true;
-//   } else return false;
-// }
-// let check = /[A-Za-z]/g;
-const string = "The quick brown fox jump over the lazy dog";
+const string = "The quick Brown fox jumps over the lazy dog";
+let check = /[A-Za-z]/g;
 
-// console.log(string.toLowerCase().match(check));
-
-//CORRECT SOLUTION
-function checkAlphabeth(str) {
-  check = "abcdefghijklmnopqrstuvwxyz";
-  LowerStr = str.toLowerCase();
-  for (letter of check) {
-    if (!LowerStr.includes(letter)) {
-      //   console.log(letter);
-      return false;
-    }
+//ONE SOLUTION
+function checkLetters(str) {
+  check = /[A-Za-z]/g;
+  if (new Set(str.toLowerCase().match(check)).size === 26) {
+    return true;
   }
-  return true;
+  return false;
 }
 
-console.log(checkAlphabeth(string));
+console.log(checkLetters(string));
+
+//SECOND SOLUTION
+// function checkForAlphabet(str) {
+//   return new Set(str.toLowerCase().match(check)).size === 26;
+// }
+
+// const alphabet = "abcdefgijklmnopqrstuvwxyz";
+// console.log(checkForAlphabet(alphabet));
+
+//THIRD SOLUTION
+// function checkAlphabeth(str) {
+//   check = "abcdefghijklmnopqrstuvwxyz";
+//   LowerStr = str.toLowerCase();
+//   for (letter of check) {
+//     if (!LowerStr.includes(letter)) {
+//       //   console.log(letter);
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// console.log(checkAlphabeth(string));
