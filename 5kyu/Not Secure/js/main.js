@@ -8,12 +8,13 @@
 // No whitespaces / underscore
 
 let string = "";
-const check = /^[A-Za-z0-9]*$/;
+const check = /^[A-Za-z0-9]+$/; //"+$" instead of "*$" capture the case f when the string is empty
 
 function checkAlphanumeric(str) {
-  if (str === "") {
-    return false;
-  } else if (str.match(check)) {
+  //   if (str === "") { //not neccesary if '+$' is sued
+  //     return false;
+  //   } else
+  if (str.match(check)) {
     //produces an array of the matches or null if nothing matches
     return true;
   }
@@ -24,7 +25,7 @@ console.log(checkAlphanumeric(string));
 //console.log(string.match(check)); //produces null. if just one value doesnt match, the whole thing produces null
 
 //SECOND SOLUTION
-function alphanumeric(string) {
-  return /^[a-zA-Z0-9]+$/.test(string);
-}
+// function alphanumeric(string) {
+//   return /^[a-zA-Z0-9]+$/.test(string);
+// }
 //the tezt method checks whether the regex is in the string.
