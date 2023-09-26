@@ -10,9 +10,9 @@ function extractMichael(str) {
   //get the text to split into an array using spaces
   splitStri = str.split(" ");
   //if you see a michael without a a comma after it, take the next element after it and put it in an array.
-  for (let names of splitStri) {
-    if ("Michael") {
-      surnames.push(names);
+  for (i = 0; i < splitStri.length; i++) {
+    if (splitStri[i] === "Michael") {
+      surnames.push(splitStri[i + 1]);
     }
   }
   return surnames;
