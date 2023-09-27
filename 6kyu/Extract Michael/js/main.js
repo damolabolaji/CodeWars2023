@@ -3,7 +3,7 @@
 //Output will be [Richards,Reeds]
 
 const string =
-  "Michael, how is Michael Richards. did you see Michael Reeds today";
+  "Michael, how is Michael Richards. did you see Michael Reeds today? i saw Michael Cummings esrlier. if Michael Soarez is there, kill him";
 function extractMichael(str) {
   //crete an empty array to store the values
   surnames = [];
@@ -18,3 +18,21 @@ function extractMichael(str) {
   return surnames;
 }
 console.log(extractMichael(string));
+
+//codewars solution
+function getMichaelLastName(inputText) {
+  var arr = inputText
+    .replace(/\./gi, "")
+    .replace(/\?/gi, "")
+    .replace(/\,/gi, "")
+    .split(" ");
+  var a = [];
+  for (var i = 0; i < arr.length; ++i)
+    if (arr[i] == "Michael" && arr[i + 1][0] == arr[i + 1][0].toUpperCase())
+      a.push(arr[i + 1]);
+  return a;
+}
+//solution two
+function getMichaelLastName(txt) {
+  return txt.match(/Michael\s([A-Z]\w+)/g).map((x) => x.split(" ")[1]);
+}
