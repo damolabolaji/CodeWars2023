@@ -9,12 +9,15 @@ function extractMichael(str) {
   surnames = [];
   //get the text to split into an array using spaces
   splitStri = str.split(" ").map((item) => {
-    item.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+    item = item.replace(/\./gi, "").replace(/\?/gi, "").replace(/\,/gi, "");
     return item;
   });
   //if you see a michael without a a comma after it, take the next element after it and put it in an array.
   for (i = 0; i < splitStri.length; i++) {
-    if (splitStri[i] === "Michael") {
+    if (
+      splitStri[i] === "Michael" &&
+      splitStri[i + 1][0] == splitStri[i + 1][0].toUpperCase()
+    ) {
       surnames.push(splitStri[i + 1]);
     }
   }
