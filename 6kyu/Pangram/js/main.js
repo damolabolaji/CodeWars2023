@@ -24,24 +24,24 @@ function checkLetters(str) {
 console.log(checkLetters(string));
 
 //SECOND SOLUTION
-// function checkForAlphabet(str) {
-//   return new Set(str.toLowerCase().match(check)).size === 26;
-// }
+function checkForAlphabet(str) {
+  return new Set(str.toLowerCase().match(check)).size === 26;
+}
 
 // const alphabet = "abcdefgijklmnopqrstuvwxyz";
 // console.log(checkForAlphabet(alphabet));
 
 //THIRD SOLUTION
-// function checkAlphabeth(str) {
-//   check = "abcdefghijklmnopqrstuvwxyz";
-//   LowerStr = str.toLowerCase();
-//   for (letter of check) {
-//     if (!LowerStr.includes(letter)) {
-//       //   console.log(letter);
-//       return false;
-//     }
-//   }
-//   return true;
-// }
+function checkAlphabeth(str) {
+  check = "abcdefghijklmnopqrstuvwxyz";
+  LowerStr = str.toLowerCase();
+  for (letter of check) {
+    if (!LowerStr.includes(letter)) {
+      //   console.log(letter);
+      return false;
+    }
+  }
+  return true;
+}
 
 // console.log(checkAlphabeth(string));
