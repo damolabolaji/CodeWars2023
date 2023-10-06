@@ -23,18 +23,19 @@
 // [] => 4 is counted out and goes into the result [3,6,2,7,5,1,4]
 
 //[3,6,2,7,5,1,4] is the result
-let array = [2, 0, 3, 5, 3, 1, 2, 8, 9];
+let array = [1, 2, 3, 4, 5, 6, 7];
 
-function circleArray(arr) {
+function circleArray(arr, k) {
   newArray = [];
-  for (i = arr.length; i > 0; i--) {
-    const n = arr.length;
-    const k = 2 + i;
-    let item = arr[((k % n) + n) % n];
-    newArray.push(item);
-    arr.splice(item, 1);
+  let index = 0;
+  for (j = arr.length; j > 0; j--) {
+    n = arr.length;
+    index = (index + k - 1) % n;
+    let item = arr.splice(index, 1);
+    newArray.push(...item);
   }
   return newArray;
 }
 
-console.log(circleArray(array));
+console.log(circleArray(array, 3));
+console.log(array);
