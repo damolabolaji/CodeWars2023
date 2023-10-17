@@ -33,3 +33,31 @@ function pigItAdvanced(str) {
     }
   });
 }
+
+//FIRST SOLUTION
+function translate(sentence) {
+  return sentence
+    .split(" ")
+    .map(function (word) {
+      var firstVowel = word.search(/[aeiou]/i);
+      var suffix = firstVowel ? "ay" : "way";
+      var newWord = (
+        word.slice(firstVowel) +
+        word.slice(0, firstVowel) +
+        suffix
+      ).replace(/(\w*)(\W*)(\w*)/, "$1$3$2");
+      if (word.charAt(0) == word.charAt(0).toUpperCase()) {
+        newWord =
+          newWord.charAt(0).toUpperCase() + newWord.slice(1).toLowerCase();
+      }
+      return newWord;
+    })
+    .join(" ");
+}
+
+//SECOND SOLUTION
+function pigTheString(sentence) {
+	return sentence.replace(/\b([aeiou]\w*)/gi,"$1way").replace(/\b([^aeiou ]+)([aeiou]\w*)/gi, function(s,f,w) { 
+    return (f[0] === f[0].toUpperCase() ? w[0].toUpperCase() : w[0])+w.slice(1)+f.toLowerCase()+'ay';
+  });
+};
