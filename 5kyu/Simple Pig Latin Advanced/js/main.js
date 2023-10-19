@@ -57,7 +57,71 @@ function translate(sentence) {
 
 //SECOND SOLUTION
 function pigTheString(sentence) {
-	return sentence.replace(/\b([aeiou]\w*)/gi,"$1way").replace(/\b([^aeiou ]+)([aeiou]\w*)/gi, function(s,f,w) { 
-    return (f[0] === f[0].toUpperCase() ? w[0].toUpperCase() : w[0])+w.slice(1)+f.toLowerCase()+'ay';
-  });
-};
+  return sentence
+    .replace(/\b([aeiou]\w*)/gi, "$1way")
+    .replace(/\b([^aeiou ]+)([aeiou]\w*)/gi, function (s, f, w) {
+      return (
+        (f[0] === f[0].toUpperCase() ? w[0].toUpperCase() : w[0]) +
+        w.slice(1) +
+        f.toLowerCase() +
+        "ay"
+      );
+    });
+}
+
+const sentence = "The black fox is great?! easily red";
+// let firstVowel = sentence
+//   .split(" ")
+//   .map((word) => (word.search(/[aeiou]/i) ? "yay" : "nay"));
+
+// console.log(firstVowel);
+
+function translateThis(sentence) {
+  return sentence
+    .split(" ")
+    .map(function (word) {
+      var firstVowel = word.search(/[aeiou]/i);
+      var suffix = firstVowel ? "ay" : "way";
+      var newWord = (
+        word.slice(firstVowel) +
+        word.slice(0, firstVowel) +
+        suffix
+      ).replace(/(\w*)(\W*)(\w*)/, "$1$3$2");
+      if (word.charAt(0) == word.charAt(0).toUpperCase()) {
+        newWord =
+          newWord.charAt(0).toUpperCase() + newWord.slice(1).toLowerCase();
+      }
+      return newWord;
+    })
+    .join(" ");
+}
+
+function pigLatinThis(str) {
+  newPigWord = str
+    .split(" ")
+    .map((word) => {
+      let firstVowelWord = word.search(/[aeiou]/i);
+      //get the first occurence of a vowel and store the index number
+      let suffix = firstVowelWord ? "ay" : "way";
+      //checking if the index number is '0' (which is falsey value) it carries out the condition
+      //sidenote: if it starts with zero, it means that the word begins with a vowel
+      let newWord = (
+        word.slice(firstVowelWord) +
+        word.slice(0, firstVowelWord) +
+        suffix
+      ).replace(/(\w*)(\W*)(\w*)/, "$1$3$2"); //groups the letters of the word into three groups 1, 2 and 3
+      //it then switches the order accordingly
+      //(\w*) means a letters, numbers and underscore will be selected and grouped
+      //(\W*) mean if it is not a letter, digit or underscore, it will be selected and grouped
+
+      if (word[0] === word[0].toUpperCase()) {
+        newWord = newWord.toLowerCase();
+        newWord = newWord[0].toUpperCase() + newWord.slice(1);
+      }
+      return newWord;
+    })
+    .join(" ");
+  return newPigWord;
+}
+
+console.log(pigLatinThis(sentence));
