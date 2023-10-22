@@ -47,14 +47,14 @@ const myArray = [
   },
   {
     house: 1234,
-    street: "Lonely St.",
+    street: "Twin St.",
     city: "Soldotna",
     zipcode: 99669,
     state: "AK",
   },
   {
     house: 1234,
-    street: "Lonely St.",
+    street: "Tess St.",
     city: "Soldotna",
     zipcode: 99669,
     state: "se",
@@ -82,16 +82,6 @@ function countStates(array) {
   return newArray;
 }
 
-console.log(countStates(myArray));
-
-// let arrayInstances = shuffleMe(theArray).reduce((obj, item) => {
-//   if (!obj[item]) {
-//     obj[item] = 0;
-//   }
-//   obj[item]++;
-//   return obj;
-// }, {});
-
 const count = (addres) => {
   const states = addres.reduce((obj, { state }) => {
     if (!state) throw new Error();
@@ -107,6 +97,24 @@ function countStt(addresses) {
     if (!states[state]) states[state] = 0;
     return states[state]++, states;
   }, {});
-
-  return Object.keys(states).map((state) => ({ state, count: states[state] }));
+  return states;
+  //   return Object.keys(states).map((state) => ({ state, count: states[state] }));
 }
+// console.log(countStt(myArray));
+
+function countStreets(array) {
+  let arrayOfStatesTypes = array.reduce((theArray, { street }) => {
+    if (!street) throw new Error();
+    if (!theArray[street]) {
+      theArray[street] = 0;
+      theArray[street]++;
+    }
+    return theArray;
+  }, {});
+  return Object.keys(arrayOfStatesTypes).map((street) => ({
+    street,
+    count: arrayOfStatesTypes[street],
+  }));
+}
+
+console.log(countStreets(myArray));
