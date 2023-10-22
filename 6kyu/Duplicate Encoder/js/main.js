@@ -33,3 +33,24 @@ function countDuplicate(str) {
   return obj;
 }
 console.log(countDuplicate("hello world you"));
+
+function collectDuplicate(str) {
+  obj = {};
+  theArray = [];
+  str.split("").forEach((element) => {
+    obj[element] = (obj[element] || 0) + 1;
+  });
+  let objKeys = Object.keys(obj); //gives an array of all then property values which are the letters
+
+  for (letter in objKeys) {
+    //looping through each letter
+    if (obj[objKeys[letter]] > 1) {
+      // Inside the loop, it accesses the objKeys[letter] to get the current key (referred to as 'letter' in this context).
+      //It then uses this key to access the corresponding value in the obj object with obj[objKeys[letter]].
+      theArray.push(objKeys[letter]);
+    }
+  }
+  return theArray;
+}
+
+console.log(collectDuplicate("hello world you"));
