@@ -23,3 +23,13 @@ function duplicateEncode(word) {
 }
 
 console.log(duplicateEncode("hello world you"));
+
+//CREATE AN OBJECT WITH DUPLICATE CHARACTERS OF A STRING
+function countDuplicate(str) {
+  obj = {};
+  str.split("").forEach((element) => {
+    obj[element] = (obj[element] || 0) + 1;
+  });
+  return obj;
+}
+console.log(countDuplicate("hello world you"));
