@@ -98,12 +98,14 @@ function countStt(addresses) {
     return states[state]++, states;
   }, {});
   return states;
-  //   return Object.keys(states).map((state) => ({ state, count: states[state] }));
+  return Object.keys(states).map((state) => ({ state, count: states[state] }));
 }
 // console.log(countStt(myArray));
 
 function countStreets(array) {
   let arrayOfStatesTypes = array.reduce((theArray, { street }) => {
+    //{ street } is an object destructuring pattern that extracts the
+    //street property from an object passed as an argument to the function.
     if (!street) throw new Error();
     if (!theArray[street]) {
       theArray[street] = 0;
