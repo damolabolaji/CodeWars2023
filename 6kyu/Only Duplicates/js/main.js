@@ -38,3 +38,11 @@ function onlyDuplicatesGPT(str) {
   return resultArray.join(""); // Join the characters into a string
 }
 console.log(onlyDuplicatesGPT("abccdefee"));
+
+//SOLUTION THREE
+function onlyShortDuplicates(str) {
+  return str
+    .split("")
+    .filter((e) => str.indexOf(e) != str.lastIndexOf(e))
+    .join("");
+}
