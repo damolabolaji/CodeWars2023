@@ -21,3 +21,14 @@ function arrayDiff(a, b) {
 
 console.log(arrayDiff([1, 2, 2, 2, 3], [2, 3]));
 
+//SECOND SOLUTION
+function array_diff(a, b) {
+  return a.filter(function (x) {
+    return b.indexOf(x) == -1;
+  });
+}
+
+//THIRD SOLUTION
+function array_diff(a, b) {
+  return a.filter((e) => !b.includes(e));
+}
