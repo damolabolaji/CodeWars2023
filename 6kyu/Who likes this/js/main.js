@@ -1,6 +1,6 @@
 // You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
 
-// Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
+// Implement the function which takes an names containing the names of people that like an item. It must return the display text as shown in the examples:
 
 // []                                -->  "no one likes this"
 // ["Peter"]                         -->  "Peter likes this"
@@ -9,12 +9,21 @@
 // ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
 // Note: For 4 or more names, the number in "and 2 others" simply increases.
 
-function whoLikesThis(array) {
-  if (array.length >= 1) {
-    return `we like thus`;
+function whoLikesThis(names) {
+  if (names.length >= 1) {
+    if (names.length >= 2) {
+      if (names.length >= 3) {
+        if (names.length > 3) {
+          return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`;
+        }
+        return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+      }
+      return `${names[0]} and ${names[1]} like this`;
+    }
+    return `${names[0]} likes this`;
   }
 
   return `no one likes this`;
 }
 
-console.log(whoLikesThis([]));
+console.log(whoLikesThis(["peter", "Alex", "Jacob", "Mark", "Max"]));
