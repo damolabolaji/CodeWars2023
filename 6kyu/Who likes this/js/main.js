@@ -28,7 +28,7 @@ function whoLikesThis(names) {
   return `no one likes this`;
 }
 
-console.log(whoLikesThis(["peter", "Alex", "Jacob", "Mark", "Max"]));
+// console.log(whoLikesThis(["peter", "Alex", "Jacob", "Mark", "Max"]));
 
 //SOLUTION TWO
 function likes(names) {
